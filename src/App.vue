@@ -1,12 +1,92 @@
 <script setup lang="ts">
 	import Sortable from 'sortablejs';
 	import { onMounted, useTemplateRef } from 'vue';
-	const magnets : string[] = [
-		'fuck',
-		'it',
+	const punctuation : string[] = [
 		',',
+		'.',
+		'?',
+		'!'
+	]
+	const magnets : string[] = [
+		'rock',
+		'ball',
+		'sky',
+		'rain',
+		'grass',
+		'breath',
+		'toast',
+		'foot',
+		'mountain',
+		'river',
+		'ocean',
+		'grass',
+		'rainbow',
+		'brain',
+		'eyes',
+		'seal',
+		'wide',
+		'narrow',
+		'throw',
+		'touch',
+		'open',
+		'bite',
+		'break',
+		'push',
+		'taste',
+		'touch',
+		'see',
+		'silly',
+		'wide',
+		'narrow',
+		'open',
+		'hollow',
+		'smooth',
+		'large',
+		'shiny',
+		'golden',
+		'vast',
+		'hopeful',
+		'slow',
+		'all',
+		'none',
+		'I',
+		'me',
+		'my',
 		'we',
-		'ball'
+		'us',
+		'our',
+		'you',
+		'your',
+		'is',
+		'is',
+		'am',
+		'are',
+		'are',
+		'can',
+		'the',
+		'the',
+		'the',
+		'by',
+		'over',
+		'under',
+		'around',
+		'out',
+		'behind',
+		'outside',
+		'and',
+		'and',
+		'but',
+		'also',
+		'not',
+		'not',
+		'not',
+		',',
+		',',
+		',',
+		'.',
+		'.',
+		'?',
+		'!'
 	]
 
 	const magnetRef = useTemplateRef('magnet-board');
@@ -32,11 +112,7 @@
 <template>
 	<div id="room">
 		<div id="board" class="magnet-container" ref="magnet-board">
-			<div>fuck</div>
-			<div>it</div>
-			<div>,</div>
-			<div>we</div>
-			<div>ball</div>
+			<div v-for="magnet in magnets">{{ magnet }}</div>
 		</div>
 		<div id="fridge" class="magnet-container" ref="fridge">
 		</div>
@@ -44,6 +120,7 @@
 </template>
 
 <style scoped>
+
 #room {
 	display: flex;
 	justify-content: space-around;
@@ -54,7 +131,9 @@
 	height: 600px;
 	width: 300px;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: flex-start;
+	align-content: start;
 	box-sizing: border-box;
 }
 
