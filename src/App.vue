@@ -129,8 +129,8 @@
 
 .magnet-container {
 
-	height: 600px;
-	width: 350px;
+	height: 700px;
+	width: 375px;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
