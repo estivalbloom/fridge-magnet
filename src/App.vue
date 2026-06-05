@@ -123,7 +123,8 @@
 
 #room {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+	gap: 12px;
 }
 
 .magnet-container {
