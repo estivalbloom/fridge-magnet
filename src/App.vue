@@ -89,20 +89,20 @@
 		'!'
 	]
 
-	const magnetRef = useTemplateRef('magnet-board');
 	const fridgeRef = useTemplateRef('fridge');
+	const magnetRef = useTemplateRef('magnet-board');
 
 	onMounted(() => {
-		if( magnetRef.value && fridgeRef.value) {
+		if( fridgeRef.value && magnetRef.value) {
 			const magnetGroup = { 
 				name: 'magnets',
 				pull: true,
 				put: true
 			};
-			Sortable.create(magnetRef.value, {
+			Sortable.create(fridgeRef.value, {
 				group: magnetGroup
 			});
-			Sortable.create(fridgeRef.value, {
+			Sortable.create(magnetRef.value, {
 				group: magnetGroup
 			});
 		}
@@ -111,10 +111,10 @@
 
 <template>
 	<div id="room">
+		<div id="fridge" class="magnet-container" ref="fridge">
+		</div>
 		<div id="board" class="magnet-container" ref="magnet-board">
 			<div v-for="magnet in magnets">{{ magnet }}</div>
-		</div>
-		<div id="fridge" class="magnet-container" ref="fridge">
 		</div>
 	</div>
 </template>
