@@ -143,7 +143,7 @@
 			</div>
 		</div>
 		<div id="controls">
-			<input type="button" value="Clear" @click="clear">
+			<input type="button" value="Clear" class="magnet" @click="clear">
 		</div>
 	</div>
 </template>
@@ -172,27 +172,28 @@
 	align-content: start;
 	box-sizing: border-box;
 	overflow-y: scroll;
+	padding: 10px;
+	gap: 5px;
+	row-gap: 5px;
 	@media screen and (max-width: 777px) {
 		height: 300px;
 	}
 }
 
 #fridge {
-	background-color: gray;
-	border: 12px solid black;
+	background-image: url('./fridge.png');
 }
 
 #board {
-	background-color:darkgoldenrod;
-	border: 12px solid saddlebrown;
+	background-image: url('./drawer.png');
 }
 
 .magnet {
-	padding: 4px;
 	background-color: beige;
-	margin: 4px;
-	border: 2px solid black;
-	border-radius: 2px;
+	margin: 5px;
+	border: 5px solid #0000;
+	border-image: url('./border-img.png') 5 fill / 5px /  5px;
+	font-family:'Courier New', Courier, monospace;
 }
 
 #controls {
