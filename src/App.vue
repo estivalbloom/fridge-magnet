@@ -173,7 +173,7 @@
 	box-sizing: border-box;
 	overflow-y: scroll;
 	@media screen and (max-width: 777px) {
-		height: 350px;
+		height: 300px;
 	}
 }
 
