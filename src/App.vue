@@ -107,28 +107,47 @@
 			});
 		}
 	})
+
+	function clear() {
+		if ( !fridgeRef.value || !magnetRef.value) {
+			return;
+		}
+		Array.from(fridgeRef.value.childNodes).forEach(node => {
+			magnetRef.value?.appendChild(node);
+		})
+	}
 </script>
 
 <template>
-	<div id="room">
-		<div id="fridge" class="magnet-container" ref="fridge">
+	<div id="app">
+		<div id="containers">
+			<div id="fridge" class="magnet-container" ref="fridge"></div>
+			<div id="board" class="magnet-container" ref="magnet-board">
+				<div v-for="magnet in magnets">{{ magnet }}</div>
+			</div>
 		</div>
-		<div id="board" class="magnet-container" ref="magnet-board">
-			<div v-for="magnet in magnets">{{ magnet }}</div>
+		<div id="controls">
+			<input type="button" value="Clear" @click="clear">
 		</div>
 	</div>
 </template>
 
 <style scoped>
 
-#room {
+#app {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+#containers {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	gap: 12px;
 }
 
 .magnet-container {
-
 	height: 700px;
 	width: 375px;
 	display: flex;
@@ -136,6 +155,10 @@
 	align-items: flex-start;
 	align-content: start;
 	box-sizing: border-box;
+	overflow-y: scroll;
+	@media screen and (max-width: 777px) {
+		height: 350px;
+	}
 }
 
 #fridge {
@@ -154,5 +177,10 @@
 	margin: 4px;
 	border: 2px solid black;
 	border-radius: 2px;
+}
+
+#controls {
+	display: flex;
+	justify-content: center;
 }
 </style>
