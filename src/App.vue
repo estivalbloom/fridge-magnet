@@ -175,6 +175,7 @@
 	padding: 10px;
 	gap: 5px;
 	row-gap: 5px;
+	background-size: cover;
 	@media screen and (max-width: 777px) {
 		height: 300px;
 	}
@@ -189,11 +190,12 @@
 }
 
 .magnet {
+	padding: 2px;
 	background-color: beige;
-	margin: 5px;
 	border: 5px solid #0000;
-	border-image: url('./border-img.png') 5 fill / 5px /  5px;
+	border-image: url('./border-img.png') 5 fill / 5px;
 	font-family:'Courier New', Courier, monospace;
+	background-clip: padding-box;
 }
 
 #controls {
