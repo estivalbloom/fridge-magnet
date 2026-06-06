@@ -93,19 +93,35 @@
 	const magnetRef = useTemplateRef('magnet-board');
 
 	onMounted(() => {
-		if( fridgeRef.value && magnetRef.value) {
-			const magnetGroup = { 
-				name: 'magnets',
-				pull: true,
-				put: true
-			};
-			Sortable.create(fridgeRef.value, {
-				group: magnetGroup
-			});
-			Sortable.create(magnetRef.value, {
-				group: magnetGroup
-			});
+		if( !fridgeRef.value || !magnetRef.value) {
+			return;
 		}
+
+		const magnetGroup = { 
+			name: 'magnets',
+			pull: true,
+			put: true
+		};
+		Sortable.create(fridgeRef.value, {
+			group: magnetGroup
+		});
+		Sortable.create(magnetRef.value, {
+			group: magnetGroup
+		});
+
+		fridgeRef.value.addEventListener('click', e => {
+			const target = e.target as HTMLDivElement;
+			if(target.classList.contains('magnet')) {
+				magnetRef.value?.appendChild(target);
+			}
+		});
+
+		magnetRef.value.addEventListener('click', e => {
+			const target = e.target as HTMLDivElement;
+			if(target.classList.contains('magnet')) {
+				fridgeRef.value?.appendChild(target)
+			}
+		})
 	})
 
 	function clear() {
@@ -123,7 +139,7 @@
 		<div id="containers">
 			<div id="fridge" class="magnet-container" ref="fridge"></div>
 			<div id="board" class="magnet-container" ref="magnet-board">
-				<div v-for="magnet in magnets">{{ magnet }}</div>
+				<div class="magnet" v-for="magnet in magnets">{{ magnet }}</div>
 			</div>
 		</div>
 		<div id="controls">
@@ -171,7 +187,7 @@
 	border: 12px solid saddlebrown;
 }
 
-.magnet-container div {
+.magnet {
 	padding: 4px;
 	background-color: beige;
 	margin: 4px;
