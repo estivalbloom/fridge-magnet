@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      seedrandom:
+        specifier: ^3.0.5
+        version: 3.0.5
       sortablejs:
         specifier: ^1.15.7
         version: 1.15.7
@@ -21,6 +24,9 @@ importers:
       '@types/node':
         specifier: ^24.12.2
         version: 24.13.0
+      '@types/seedrandom':
+        specifier: ^3.0.8
+        version: 3.0.8
       '@types/sortablejs':
         specifier: ^1.15.9
         version: 1.15.9
@@ -331,6 +337,9 @@ packages:
 
   '@types/node@24.13.0':
     resolution: {integrity: sha512-5vtOqGQr4NJKeEzV441FcOi2MeG9UTWq9LqVLGneDdu4vlX17H8kQ2PA2UmNwCUGPVDj4oBjNhS7ReVEIWJJrg==}
+
+  '@types/seedrandom@3.0.8':
+    resolution: {integrity: sha512-TY1eezMU2zH2ozQoAFAQFOPpvP15g+ZgSfTZt31AUUH/Rxtnz3H+A/Sv1Snw2/amp//omibc+AEkTaA8KUeOLQ==}
 
   '@types/sortablejs@1.15.9':
     resolution: {integrity: sha512-7HP+rZGE2p886PKV9c9OJzLBI6BBJu1O7lJGYnPyG3fS4/duUCcngkNCjsLwIMV+WMqANe3tt4irrXHSIe68OQ==}
@@ -741,6 +750,9 @@ packages:
   run-applescript@7.1.0:
     resolution: {integrity: sha512-DPe5pVFaAsinSaV6QjQ6gdiedWDcRCbUuiQfQa2wmWV7+xC9bGulGI8+TdRmoFkAPaBXk8CrAbnlY2ISniJ47Q==}
     engines: {node: '>=18'}
+
+  seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -1207,6 +1219,8 @@ snapshots:
     dependencies:
       undici-types: 7.18.2
 
+  '@types/seedrandom@3.0.8': {}
+
   '@types/sortablejs@1.15.9': {}
 
   '@vitejs/plugin-vue@6.0.7(vite@8.0.16(@types/node@24.13.0))(vue@3.5.35(typescript@6.0.3))':
@@ -1582,6 +1596,8 @@ snapshots:
       '@rolldown/binding-win32-x64-msvc': 1.0.3
 
   run-applescript@7.1.0: {}
+
+  seedrandom@3.0.5: {}
 
   semver@6.3.1: {}
 

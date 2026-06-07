@@ -1,87 +1,22 @@
 <script setup lang="ts">
 	import Sortable from 'sortablejs';
 	import { onMounted, useTemplateRef } from 'vue';
-	const magnets : string[] = [
-		'rock',
-		'ball',
-		'sky',
-		'rain',
-		'grass',
-		'breath',
-		'toast',
-		'foot',
-		'mountain',
-		'river',
-		'ocean',
-		'grass',
-		'rainbow',
-		'brain',
-		'eyes',
-		'seal',
-		'wide',
-		'narrow',
-		'throw',
-		'touch',
-		'open',
-		'bite',
-		'break',
-		'push',
-		'taste',
-		'touch',
-		'see',
-		'silly',
-		'wide',
-		'narrow',
-		'open',
-		'hollow',
-		'smooth',
-		'large',
-		'shiny',
-		'golden',
-		'vast',
-		'hopeful',
-		'slow',
-		'all',
-		'none',
-		'I',
-		'me',
-		'my',
-		'we',
-		'us',
-		'our',
-		'you',
-		'your',
-		'is',
-		'is',
-		'am',
-		'are',
-		'are',
-		'can',
-		'the',
-		'the',
-		'the',
-		'by',
-		'over',
-		'under',
-		'around',
-		'out',
-		'behind',
-		'outside',
-		'and',
-		'and',
-		'but',
-		'also',
-		'not',
-		'not',
-		'not',
-		',',
-		',',
-		',',
-		'.',
-		'.',
-		'?',
-		'!'
-	];
+	import { WordType, WordBank} from './word-bank';
+
+	const date = new Date()
+	const seed = date.toLocaleDateString('en-US', { timeZone : 'GMT'});
+
+	const bank = new WordBank(seed)
+	const adjectives = bank.chooseWords(WordType.Adjective, 10, false);
+	const common = bank.chooseWords(WordType.Common, 10, true);
+	const logic = bank.chooseWords(WordType.Logic, 10, true);
+	const nouns = bank.chooseWords(WordType.Noun, 20, false);
+	const prepositions = bank.chooseWords(WordType.Preposition, 5, false);
+	const pronouns = bank.chooseWords(WordType.Pronoun, 10, true);
+	const punctuation = bank.chooseWords(WordType.Punctuation, 10, true);
+	const verbs = bank.chooseWords(WordType.Verb, 15, false);
+
+	const magnets : string[] = nouns.concat(verbs, adjectives, common, logic, prepositions, pronouns, punctuation);
 
 	const fridgeRef = useTemplateRef('fridge');
 	const magnetRef = useTemplateRef('magnet-board');
