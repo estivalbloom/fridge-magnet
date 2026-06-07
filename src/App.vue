@@ -100,13 +100,13 @@
 	align-items: flex-start;
 	align-content: start;
 	box-sizing: border-box;
-	overflow-y: scroll;
 	padding: 10px;
 	gap: 5px;
 	row-gap: 5px;
 	background-size: cover;
 	@media screen and (max-width: 777px) {
 		height: 300px;
+		overflow-y: scroll;
 	}
 }
 
