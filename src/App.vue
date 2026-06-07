@@ -1,7 +1,9 @@
 <script setup lang="ts">
 	import Sortable from 'sortablejs';
-	import { onMounted, useTemplateRef } from 'vue';
+	import { onMounted, useTemplateRef, ref } from 'vue';
 	import { WordType, WordBank} from './word-bank';
+
+	const open = ref(false);
 
 	const date = new Date()
 	const seed = date.toLocaleDateString('en-US', { timeZone : 'GMT'});
@@ -61,18 +63,20 @@
 			magnetRef.value?.appendChild(node);
 		})
 	}
+
 </script>
 
 <template>
 	<div id="app">
 		<div id="containers">
-			<div id="fridge" class="magnet-container" ref="fridge"></div>
+			<div id="fridge" :class="{ 'magnet-container': true, 'fridge-open': open }" ref="fridge"></div>
 			<div id="board" class="magnet-container" ref="magnet-board">
 				<div class="magnet" v-for="magnet in magnets">{{ magnet }}</div>
 			</div>
 		</div>
 		<div id="controls">
 			<input type="button" value="Clear" class="magnet" @click="clear">
+			<input type="button" :value="`${open ? 'Close' : 'Open'} the fridge`" class="magnet" @click="() => open = !open">
 		</div>
 	</div>
 </template>
@@ -114,6 +118,10 @@
 	background-image: url('./fridge.png');
 }
 
+.fridge-open {
+	background-image: url('./fridge-open.png') !important;
+}
+
 #board {
 	background-image: url('./drawer.png');
 }
@@ -130,5 +138,6 @@
 #controls {
 	display: flex;
 	justify-content: center;
+	gap: 4px;
 }
 </style>
