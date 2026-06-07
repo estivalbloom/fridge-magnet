@@ -1,12 +1,6 @@
 <script setup lang="ts">
 	import Sortable from 'sortablejs';
 	import { onMounted, useTemplateRef } from 'vue';
-	const punctuation : string[] = [
-		',',
-		'.',
-		'?',
-		'!'
-	]
 	const magnets : string[] = [
 		'rock',
 		'ball',
@@ -87,7 +81,7 @@
 		'.',
 		'?',
 		'!'
-	]
+	];
 
 	const fridgeRef = useTemplateRef('fridge');
 	const magnetRef = useTemplateRef('magnet-board');
