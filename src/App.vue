@@ -5,7 +5,7 @@
 
 	const open = ref(false);
 
-	const date = new Date()
+	const date = new Date();
 	const seed = date.toLocaleDateString('en-US', { timeZone : 'GMT'});
 
 	const bank = new WordBank(seed)
@@ -22,8 +22,7 @@
 
 	const fridgeRef = useTemplateRef('fridge');
 	const magnetRef = useTemplateRef('magnet-board');
-
-	onMounted(() => {
+	function setupMagnets() {
 		if( !fridgeRef.value || !magnetRef.value) {
 			return;
 		}
@@ -53,6 +52,10 @@
 				fridgeRef.value?.appendChild(target)
 			}
 		})
+	}
+
+	onMounted(() => {
+		setupMagnets();
 	})
 
 	function clear() {
@@ -64,6 +67,27 @@
 		})
 	}
 
+	const nextDay = new Date();
+	nextDay.setUTCDate(date.getUTCDate() + 1);
+	nextDay.setUTCHours(0);
+	nextDay.setUTCMinutes(0);
+	nextDay.setUTCSeconds(0);
+	nextDay.setUTCMilliseconds(0);
+
+	const timeUntil = ref('');
+	function updateTimeUntil() {
+		const currentTime = new Date();	
+		const msUntil = nextDay.getTime() - currentTime.getTime();
+		if ( msUntil < 0 ) {
+			timeUntil.value = 'refresh to see new words!';
+		}
+		const hoursUntil = Math.floor(msUntil / (1000 * 60 * 60));
+		const minutesUntil = Math.floor((msUntil % (1000 * 60 * 60) / (1000 * 60)));
+		const secondsUntil = Math.floor((msUntil % (1000* 60) / 1000));
+		timeUntil.value = `${hoursUntil} hour(s), ${minutesUntil} minute(s), and ${secondsUntil} second(s)`;
+	}
+	updateTimeUntil();
+	setInterval(updateTimeUntil, 100);
 </script>
 
 <template>
@@ -74,9 +98,12 @@
 				<div class="magnet" v-for="magnet in magnets">{{ magnet }}</div>
 			</div>
 		</div>
-		<div id="controls">
+		<div class="control-tray">
 			<input type="button" value="Clear" class="magnet" @click="clear">
 			<input type="button" :value="`${open ? 'Close' : 'Open'} the fridge`" class="magnet" @click="() => open = !open">
+		</div>
+		<div class="control-tray">
+			<div id="timer" ref="timer" class="magnet"> Magnets reset in: {{ timeUntil }}. </div>
 		</div>
 	</div>
 </template>
@@ -135,7 +162,7 @@
 	background-clip: padding-box;
 }
 
-#controls {
+.control-tray {
 	display: flex;
 	justify-content: center;
 	gap: 4px;
