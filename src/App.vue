@@ -10,15 +10,15 @@
 
 	const bank = new WordBank(seed)
 	const adjectives = bank.chooseWords(WordType.Adjective, 10, false);
-	const common = bank.chooseWords(WordType.Common, 10, true);
+	const common = bank.chooseWords(WordType.Common, 20, true);
 	const logic = bank.chooseWords(WordType.Logic, 10, true);
 	const nouns = bank.chooseWords(WordType.Noun, 20, false);
 	const prepositions = bank.chooseWords(WordType.Preposition, 5, false);
 	const pronouns = bank.chooseWords(WordType.Pronoun, 10, true);
 	const punctuation = bank.chooseWords(WordType.Punctuation, 10, true);
-	const verbs = bank.chooseWords(WordType.Verb, 15, false);
+	const verbs = bank.chooseWords(WordType.Verb, 10, false);
 
-	const magnets : string[] = nouns.concat(verbs, adjectives, common, logic, prepositions, pronouns, punctuation);
+	const magnets : string[] = nouns.concat(verbs, adjectives, common, logic, prepositions, pronouns, punctuation).sort();
 
 	const fridgeRef = useTemplateRef('fridge');
 	const magnetRef = useTemplateRef('magnet-board');
@@ -51,7 +51,7 @@
 			if(target.classList.contains('magnet')) {
 				fridgeRef.value?.appendChild(target)
 			}
-		})
+		});
 	}
 
 	onMounted(() => {
