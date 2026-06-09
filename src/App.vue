@@ -80,6 +80,7 @@
 		const msUntil = nextDay.getTime() - currentTime.getTime();
 		if ( msUntil < 0 ) {
 			timeUntil.value = 'refresh to see new words!';
+			return;
 		}
 		const hoursUntil = Math.floor(msUntil / (1000 * 60 * 60));
 		const minutesUntil = Math.floor((msUntil % (1000 * 60 * 60) / (1000 * 60)));
