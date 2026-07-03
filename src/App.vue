@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import Sortable from 'sortablejs';
 	import { onMounted, useTemplateRef, ref } from 'vue';
-	import { WordType, WordBank} from './word-bank';
+	import { WordType, WordBank } from './word-bank';
 
 	const open = ref(false);
 
@@ -107,6 +107,15 @@
 			<div id="timer" ref="timer" class="magnet"> Magnets reset in: {{ timeUntil }}. </div>
 		</div>
 	</div>
+	<div id="footer">
+		<div>
+			<a href="https://github.com/estivalbloom/fridge-magnet">Github page</a>
+		</div>
+		<div>
+			<a href="https://ko-fi/estivalbloom">Buy me a coffee</a>
+		</div>
+		<div>© Estivalbloom 2026</div>
+	</div>
 </template>
 
 <style scoped>
@@ -115,6 +124,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	padding: 8px;
 }
 
 #containers {
@@ -167,5 +177,25 @@
 	display: flex;
 	justify-content: center;
 	gap: 4px;
+}
+
+#footer {
+	margin: 8px 0 0 0;
+	padding :4px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: #0007;
+}
+
+#footer * {
+	color: #AFAFAF;
+	font-family:'Courier New', Courier, monospace;
+	font-size: 12px;
+}
+
+#footer *:nth-child(n + 2)::before {
+	content: "|";
+	margin: 0px 8px;
 }
 </style>
