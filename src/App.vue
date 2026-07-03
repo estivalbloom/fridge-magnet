@@ -106,15 +106,16 @@
 		<div class="control-tray">
 			<div id="timer" ref="timer" class="magnet"> Magnets reset in: {{ timeUntil }}. </div>
 		</div>
-	</div>
-	<div id="footer">
-		<div>
-			<a href="https://github.com/estivalbloom/fridge-magnet">Github page</a>
+		<div id="spacer"></div>
+		<div id="footer">
+			<div>
+				<a href="https://github.com/estivalbloom/fridge-magnet">Github page</a>
+			</div>
+			<div>
+				<a href="https://ko-fi/estivalbloom">Buy me a coffee</a>
+			</div>
+			<div>© Estivalbloom 2026</div>
 		</div>
-		<div>
-			<a href="https://ko-fi/estivalbloom">Buy me a coffee</a>
-		</div>
-		<div>© Estivalbloom 2026</div>
 	</div>
 </template>
 
@@ -124,10 +125,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	padding: 8px;
+	height: 100%;
 }
 
 #containers {
+	padding: 8px;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -177,6 +179,10 @@
 	display: flex;
 	justify-content: center;
 	gap: 4px;
+}
+
+#spacer {
+	flex-grow: 1;
 }
 
 #footer {
